@@ -8,7 +8,7 @@ class OpenaiChatModule:
                             ]
 
     # 调用chatgpt原生接口，不做任何修改
-    def chat_with_origin_model(self, text):
+    def chat_with_model(self, text):
         openai.api_key = self.openai_api_key
         text = text.replace('\n', ' ').replace('\r', '').strip()  # 文本处理，换行符和回车符替换为空格
         if len(text) == 0:
@@ -28,9 +28,9 @@ class OpenaiChatModule:
         return reply
 
 if __name__ == '__main__':
-    openai_api_key = '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'
+    openai_api_key = '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'
 
     openaichatmodule = OpenaiChatModule(openai_api_key)
-    print(openaichatmodule.chat_with_origin_model('你好，你叫什么?'))
-    print(openaichatmodule.chat_with_origin_model('评价一下洛阳'))
-    print(openaichatmodule.chat_with_origin_model('和密云进行对比'))
+    print(openaichatmodule.chat_with_model('你好，你叫什么?'))
+    print(openaichatmodule.chat_with_model('评价一下洛阳'))
+    print(openaichatmodule.chat_with_model('和密云进行对比'))

@@ -53,7 +53,7 @@ if __name__ =='__main__':
     SECRET_KEY = "SV3kBCNsIZEgVthaspeL1rdExce3TlZn"
 
     baidutts = BaiduTTS(APP_ID,API_KEY,SECRET_KEY)
-    baidutts.text_to_speech_and_play("真他妈好吃，真他妈香，哈哈哈哈哈哈")
+    baidutts.text_to_speech_and_play("天气不错")
 
     # pyttsx3tts = Python3TTS()
     # pyttsx3tts.text_to_speech_and_play('天气真不错')

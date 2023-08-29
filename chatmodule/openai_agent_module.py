@@ -17,7 +17,7 @@ import openai
 import os
 os.environ["WOLFRAM_ALPHA_APPID"] = ""
 os.environ["SERPER_API_KEY"] = "606fb09375dee93f847a9d37ea7078661fb092d6"
-openai_api_key = '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'
+openai_api_key = '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'
 
 FORMAT_INSTRUCTIONS_CHINESE = """RESPONSE FORMAT INSTRUCTIONS
 ----------------------------
@@ -95,7 +95,7 @@ class OpenaiAgentModule:
         self.agent_obj = self.agent_cls.from_llm_and_tools(self.llm, self.tools, callback_manager=None, output_parser=self.output_parser, system_message=MYPREFIX)
         self.agent = AgentExecutor.from_agent_and_tools(agent=self.agent_obj, tools=self.tools, callback_manager=None, verbose=True, memory=self.memory)
 
-    def chat_with_agent(self, text):
+    def chat_with_model(self, text):
         openai.api_key = self.openai_api_key
         text = text.replace('\n', ' ').replace('\r', '').strip()
         if len(text) == 0:
@@ -107,9 +107,9 @@ class OpenaiAgentModule:
 
 if __name__ == '__main__':
     openaiagentmodule = OpenaiAgentModule(openai_api_key)
-    # print(openaiagentmodule.chat_with_agent('今天是几号?，今天北京天气怎么样?'))
-    # print(openaiagentmodule.chat_with_agent('今天杭州天气怎么样?'))
-    # print(openaiagentmodule.chat_with_agent('我应该穿什么出门?'))
+    print(openaiagentmodule.chat_with_model('今天是几号?，今天北京天气怎么样?'))
+    print(openaiagentmodule.chat_with_model('今天杭州天气怎么样?'))
+    print(openaiagentmodule.chat_with_model('我应该穿什么出门?'))
     # print(openaiagentmodule.chat_with_agent('蔡徐坤的生日是哪天?'))
     # print(openaiagentmodule.chat_with_agent('他有什么爱好?'))
     # print(openaiagentmodule.chat_with_agent('距离他下次生日还有多少天?'))

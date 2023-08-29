@@ -30,11 +30,9 @@ def run(picowakeword, asr, tts, openai_chat_module):
             while True:  # 进入一次对话
                 q = asr.speech_to_text()
                 print(f'recognize_from_microphone, text={q}')
-                if q is None:
-                    break
-                else:
-                    res = openai_chat_module.chat_with_model(q)
-                    tts.text_to_speech_and_play(res)
+                res = openai_chat_module.chat_with_model(q)
+                print(res)
+                tts.text_to_speech_and_play('嗯' + res)
 
 def Orator():
     # 唤醒
