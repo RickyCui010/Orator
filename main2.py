@@ -54,7 +54,7 @@ def Orator():
         exit(0)
     finally:
         print('本轮对话结束')
-        tts.text_to_speech_and_play('我退下啦！')
+        tts.text_to_speech_and_play('我退下啦！!')
         Orator()
 
 
