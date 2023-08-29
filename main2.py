@@ -16,15 +16,11 @@ openai_api_key = "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"  # openai
 
 
 def run(picowakeword, asr, tts, openai_chat_module):
-    while True:  # 开始需要始终保持对唤醒词的监听
+    while True:
         audio_obj = picowakeword.stream.read(picowakeword.porcupine.frame_length, exception_on_overflow=False)
         audio_obj_unpacked = struct.unpack_from("h" * picowakeword.porcupine.frame_length, audio_obj)
         keyword_idx = picowakeword.porcupine.process(audio_obj_unpacked)
         if keyword_idx >= 0:
-            picowakeword.porcupine.delete()
-            picowakeword.stream.close()
-            picowakeword.myaudio.terminate()  # 需要对取消对麦克风的占用!
-
             print("我在,请讲！")
             tts.text_to_speech_and_play("我在,请讲！")
             while True:  # 进入一次对话
@@ -32,7 +28,9 @@ def run(picowakeword, asr, tts, openai_chat_module):
                 print(f'recognize_from_microphone, text={q}')
                 res = openai_chat_module.chat_with_model(q)
                 print(res)
-                tts.text_to_speech_and_play('嗯' + res)
+                tts.text_to_speech_and_play(res)
+
+
 
 def Orator():
     # 唤醒
@@ -53,11 +51,12 @@ def Orator():
     try:
         run(picowakeword, asr, tts, openai_chat_module)
     except KeyboardInterrupt:  # 键盘退出，云资源释放
-            exit(0)
+        exit(0)
     finally:
         print('本轮对话结束')
         tts.text_to_speech_and_play('我退下啦！')
         Orator()
+
 
 if __name__ == '__main__':
     Orator()
