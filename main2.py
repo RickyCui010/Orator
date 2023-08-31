@@ -16,21 +16,19 @@ openai_api_key = "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"  # openai
 
 
 def run(picowakeword, asr, tts, openai_chat_module):
-    while True:
-        audio_obj = picowakeword.stream.read(picowakeword.porcupine.frame_length, exception_on_overflow=False)
-        audio_obj_unpacked = struct.unpack_from("h" * picowakeword.porcupine.frame_length, audio_obj)
-        keyword_idx = picowakeword.porcupine.process(audio_obj_unpacked)
-        if keyword_idx >= 0:
-            print("我在,请讲！")
-            tts.text_to_speech_and_play("我在,请讲！")
-            while True:  # 进入一次对话
-                q = asr.speech_to_text()
-                print(f'recognize_from_microphone, text={q}')
+    while True:  # 开始需要始终保持对唤醒词的监听
+        print("我在,请讲！")
+        tts.text_to_speech_and_play("我在,请讲！")
+        while True:  # 进入一次对话
+            q = asr.speech_to_text()
+            print(f'recognize_from_microphone, text={q}')
+            if q is None:
+                break
+            if "再见" in q or "拜拜" in q:
+                break
+            else:
                 res = openai_chat_module.chat_with_model(q)
-                print(res)
                 tts.text_to_speech_and_play(res)
-
-
 
 def Orator():
     # 唤醒
@@ -41,8 +39,8 @@ def Orator():
     # asr = OpenaiASR(openai_api_key)
 
     # 文字转语音
-    tts = BaiduTTS(Baidu_APP_ID, Baidu_API_KEY, Baidu_SECRET_KEY)
-    # tts = Python3TTS()
+    # tts = BaiduTTS(Baidu_APP_ID, Baidu_API_KEY, Baidu_SECRET_KEY)
+    tts = Python3TTS()
 
     # chatgpt模块
     openai_chat_module = OpenaiChatModule(openai_api_key)
@@ -51,12 +49,10 @@ def Orator():
     try:
         run(picowakeword, asr, tts, openai_chat_module)
     except KeyboardInterrupt:  # 键盘退出，云资源释放
-        exit(0)
+            exit(0)
     finally:
         print('本轮对话结束')
-        tts.text_to_speech_and_play('我退下啦！!')
-        Orator()
-
+        tts.text_to_speech_and_play('我退下啦！')
 
 if __name__ == '__main__':
     Orator()

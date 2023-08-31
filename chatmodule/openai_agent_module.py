@@ -1,4 +1,5 @@
-# pip install langchain
+# pip install langchain==0.0.139
+# pip install cn2an
 # pip install wolframalpha
 from tools.gettime import GetTimeRun
 from tools.getweather import GetWeatherRun

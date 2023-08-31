@@ -32,6 +32,8 @@ def run(picowakeword, asr, tts, openai_chat_module):
                 print(f'recognize_from_microphone, text={q}')
                 if q is None:
                     break
+                if "再见" in q or "拜拜" in q:
+                    break
                 else:
                     res = openai_chat_module.chat_with_model(q)
                     tts.text_to_speech_and_play(res)
@@ -45,8 +47,8 @@ def Orator():
     # asr = OpenaiASR(openai_api_key)
 
     # 文字转语音
-    tts = BaiduTTS(Baidu_APP_ID, Baidu_API_KEY, Baidu_SECRET_KEY)
-    # tts = Python3TTS()
+    # tts = BaiduTTS(Baidu_APP_ID, Baidu_API_KEY, Baidu_SECRET_KEY)
+    tts = Python3TTS()
 
     # chatgpt模块
     openai_chat_module = OpenaiChatModule(openai_api_key)

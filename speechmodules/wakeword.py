@@ -4,7 +4,7 @@ import struct
 
 
 PICOVOICE_API_KEY = "YDjXSOVWQgHmUnnjsYsUZ6MMBI4Fg2PvUf5BdbqNanxrpNlDD49Y0w=="
-keyword_path = './hey-robot_en_windows_v2_2_0.ppn'
+keyword_path = './hey-robot_en_linux_v2_2_0.ppn'
 
 class PicoWakeWord:
     def __init__(self, PICOVOICE_API_KEY, keyword_path, model_path=None):
