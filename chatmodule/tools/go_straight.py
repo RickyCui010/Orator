@@ -14,7 +14,7 @@ class GoStraitRun(object):
 
         # 设置命令行命令和工作目录
         command = 'mvn test'
-        working_directory = r'C:\Users\Roll0\Desktop\Temporary Folder\testRobotMove'
+        working_directory = './testRobotMove'
 
         # 执行命令
         subprocess.call(command, cwd=working_directory, shell=True)

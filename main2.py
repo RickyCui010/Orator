@@ -17,8 +17,6 @@ openai_api_key = "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"  # openai
 
 def run(picowakeword, asr, tts, openai_chat_module):
     while True:  # 开始需要始终保持对唤醒词的监听
-        print("我在,请讲！")
-        tts.text_to_speech_and_play("我在,请讲！")
         while True:  # 进入一次对话
             q = asr.speech_to_text()
             print(f'recognize_from_microphone, text={q}')

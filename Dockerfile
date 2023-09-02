@@ -9,4 +9,4 @@ RUN apt-get install libasound-dev libportaudio2 libportaudiocpp0 portaudio19-dev
 RUN pip install pyaudio
 RUN pip install -r requirements.txt
 
-CMD ["python", "./speechmodules/speech2text.py"]
+CMD ["python", "./main"]
