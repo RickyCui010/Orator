@@ -4,9 +4,14 @@ import openai
 class OpenaiChatModule:
     def __init__(self, openai_api_key):
         self.openai_api_key = openai_api_key
+        # self.conversation = [
+        #                         {"role": "system", "content": "你的名字叫robot,你是语音助手，给我的对话要简略，最好在20字以内"} # 初始值，身份设定
+        #                     ]
+
         self.conversation = [
-                                {"role": "system", "content": "你的名字叫robot,你是语音助手，给我的对话要简略，最好在20字以内"} # 初始值，身份设定
+                                {"role": "system"} # 初始值，身份设定
                             ]
+
 
     # 调用chatgpt原生接口，不做任何修改
     def chat_with_model(self, text):
@@ -32,6 +37,8 @@ if __name__ == '__main__':
     openai_api_key = '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'
 
     openaichatmodule = OpenaiChatModule(openai_api_key)
+    # print(openaichatmodule.chat_with_model('你好，你叫什么?'))
+    # print(openaichatmodule.chat_with_model('评价一下洛阳'))
+    # print(openaichatmodule.chat_with_model('和密云进行对比'))
     print(openaichatmodule.chat_with_model('你好，你叫什么?'))
-    print(openaichatmodule.chat_with_model('评价一下洛阳'))
-    print(openaichatmodule.chat_with_model('和密云进行对比'))
+
