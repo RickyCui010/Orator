@@ -12,7 +12,7 @@ keyword_path = './speechmodules/hey-robot_en_windows_v2_2_0.ppn'  # 唤醒词检
 Baidu_APP_ID = '33233995'  # 百度APP_ID
 Baidu_API_KEY = 'mih6OzRDinv3vdgO5pTqDRMN'  # 百度API_KEY
 Baidu_SECRET_KEY = 'SV3kBCNsIZEgVthaspeL1rdExce3TlZn'  # 百度SECRET_KEY
-openai_api_key = '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' # openai key
+openai_api_key = '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' # openai key
 
 
 def run(picowakeword, asr, tts, openai_chat_module):

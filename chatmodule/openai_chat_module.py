@@ -31,7 +31,7 @@ class OpenaiChatModule:
         return reply
 
 if __name__ == '__main__':
-    openai_api_key = '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'
+    openai_api_key = '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'
 
     openaichatmodule = OpenaiChatModule(openai_api_key)
     print(openaichatmodule.chat_with_model('你好，你叫什么?'))
