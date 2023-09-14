@@ -1,7 +1,7 @@
 import openai
 
 # 设置您的OpenAI API密钥
-openai.api_key = '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'
+openai.api_key = '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'
 
 def generate_chat_response(prompt, max_tokens=150, temperature=0.7):
     response = openai.Completion.create(
