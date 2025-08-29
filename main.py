@@ -13,6 +13,7 @@ Baidu_APP_ID = '33233995'  # 百度APP_ID
 Baidu_API_KEY = 'mih6OzRDinv3vdgO5pTqDRMN'  # 百度API_KEY
 Baidu_SECRET_KEY = 'SV3kBCNsIZEgVthaspeL1rdExce3TlZn'  # 百度SECRET_KEY
 openai_api_key = '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'  # openai key
+openai_api_key_2 = "sk-testtesttesttesttesttest"  # openai key 2
 
 
 def run(picowakeword, asr, tts, openai_chat_module):
